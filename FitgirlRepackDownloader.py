@@ -16,16 +16,6 @@ import requests
 from bs4 import BeautifulSoup
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
-import ctypes
-
-def resource_path(relative_path):
-    """ Get absolute path to resource, works for dev and for PyInstaller """
-    try:
-        base_path = sys._MEIPASS
-    except Exception:
-        base_path = os.path.abspath(".")
-
-    return os.path.join(base_path, relative_path)
 
 # --- Global Configuration ---
 DOWNLOADS_FOLDER = os.path.join(os.path.expanduser("~"), "Downloads")
@@ -193,10 +183,12 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("FitGirl Repacks Downloader")
-        self.setWindowIcon(QtGui.QIcon(resource_path("fitgirl.ico")))
         self.setMinimumSize(950, 750)
         self.setWindowFlags(Qt.FramelessWindowHint)
         self.setAttribute(Qt.WA_TranslucentBackground)
+        
+        self.setWindowOpacity(0.97)
+
         self.setAcceptDrops(True)
         self.download_folder = DOWNLOADS_FOLDER
         self.input_file_path = ""
@@ -256,13 +248,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.file_progress_bar = QtWidgets.QProgressBar()
         self.overall_progress_bar = QtWidgets.QProgressBar()
         
-        # --- Corrected Status Layout ---
-        status_layout.addWidget(self.file_label, 0, 0, 1, 1)
-        status_layout.addWidget(self.speed_label, 0, 1, 1, 1, alignment=Qt.AlignRight)
-        status_layout.addWidget(QtWidgets.QLabel("File Progress:"), 1, 0)
-        status_layout.addWidget(self.file_progress_bar, 1, 1)
-        status_layout.addWidget(QtWidgets.QLabel("Overall Progress:"), 2, 0)
-        status_layout.addWidget(self.overall_progress_bar, 2, 1)
+        status_layout.addWidget(self.file_label, 0, 0); status_layout.addWidget(self.speed_label, 0, 1, alignment=Qt.AlignRight)
+        status_layout.addWidget(QtWidgets.QLabel("File Progress:"), 1, 0); status_layout.addWidget(self.file_progress_bar, 1, 1)
+        status_layout.addWidget(QtWidgets.QLabel("Overall Progress:"), 2, 0); status_layout.addWidget(self.overall_progress_bar, 2, 1)
 
         self.status_label = QtWidgets.QLabel("👋 Welcome! Load links or drag & drop a .txt file.")
         self.status_label.setObjectName("statusBar")
@@ -467,9 +455,13 @@ class MainWindow(QtWidgets.QMainWindow):
     def closeEvent(self, event): self.save_session(); self.worker.stop() if self.worker else None; event.accept()
 
 if __name__ == "__main__":
-    myappid = 'mycompany.myproduct.subproduct.version'
-    ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
     app = QtWidgets.QApplication(sys.argv)
+    try:
+        import ctypes
+        myappid = 'mycompany.fitgirldownloader.1.0'
+        ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
+    except (ImportError, AttributeError):
+        pass
     window = MainWindow()
     window.show()
     sys.exit(app.exec_())
