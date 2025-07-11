@@ -1,8 +1,8 @@
 # FitGirl Repacks Downloader
 
-A modern, multi-threaded GUI downloader designed to process and download files from FitGirl Repacks links efficiently. The application features a sleek, data-driven UI, session persistence, and robust download controls.
+A modern, multi-threaded GUI downloader designed to process and download files from FitGirl Repacks links efficiently. This utility is specifically built to handle the **"F**king Fast"** download links to maximize speed and reliability.
 
-
+![Application Screenshot](Screenshot.png)
 
 ---
 
@@ -32,7 +32,7 @@ A modern, multi-threaded GUI downloader designed to process and download files f
 The easiest way to use the application is to download the pre-built executable.
 
 1.  Go to the **[Releases](https://github.com/your-username/your-repo-name/releases)** page of this GitHub repository.
-2.  Download the latest `FitGirl_Downloader.exe` file from the "Assets" section.
+2.  Download the latest `FitgirlRepackDownloader.exe` file from the "Assets" section.
 3.  Place the `.exe` file in any folder on your computer.
 4.  Double-click to run. No installation is needed!
 
@@ -74,20 +74,14 @@ If you prefer to run or build the application from the source code, follow these
     venv\Scripts\activate
     ```
 
-3.  **Install dependencies:** Create a file named `requirements.txt` with the following content:
-    ```
-    requests
-    beautifulsoup4
-    PyQt5
-    ```
-    Then, run the installation command:
+3.  **Install dependencies:**
     ```bash
     pip install -r requirements.txt
     ```
 
 4.  **Run the application:**
     ```bash
-    python final.py
+    python FitgirlRepackDownloader.py
     ```
 
 ### 3. Creating the Executable
@@ -97,4 +91,4 @@ To package the application into a single `.exe` file yourself, run the following
 ```bash
 pip install pyinstaller
 
-pyinstaller --onefile --windowed --name="FitGirl Downloader" final.py
+pyinstaller --onefile --windowed --name="FitgirlRepackDownloader" FitgirlRepackDownloader.py
