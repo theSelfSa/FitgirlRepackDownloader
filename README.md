@@ -1,4 +1,4 @@
-# FitGirl Repacks Downloader
+# FitGirl Repacks Downloader - Standalone Application (.exe)
 
 A modern, multi-threaded GUI downloader designed to process and download files from FitGirl Repacks links efficiently. This utility is specifically built to handle the **"F**king Fast"** download links to maximize speed and reliability.
 
