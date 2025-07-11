@@ -31,7 +31,7 @@ A modern, multi-threaded GUI downloader designed to process and download files f
 
 The easiest way to use the application is to download the pre-built executable.
 
-1.  Go to the **[Releases](https://github.com/your-username/your-repo-name/releases)** page of this GitHub repository.
+1.  Go to the **[Releases](https://github.com/theSelfSa/FitgirlRepackDownloader/releases)** page of this GitHub repository.
 2.  Download the latest `FitgirlRepackDownloader.exe` file from the "Assets" section.
 3.  Place the `.exe` file in any folder on your computer.
 4.  Double-click to run. No installation is needed!
